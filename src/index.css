@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --text-scale: 1;
+    --font-size-base: 1.25rem; /* Minimum 20pt / 1.25rem by default */
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Screen flashing alert for multi-channel notifications */
+@keyframes screen-flash {
+  0%, 100% {
+    box-shadow: inset 0 0 0 0 rgba(239, 68, 68, 0);
+    background-color: transparent;
+  }
+  50% {
+    box-shadow: inset 0 0 100px 30px rgba(239, 68, 68, 0.6);
+    background-color: rgba(239, 68, 68, 0.15);
+  }
+}
+
+.animate-alert-flash {
+  animation: screen-flash 1s ease-in-out infinite;
+}
+
+/* Pulsing emergency ring */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.8);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 24px rgba(239, 68, 68, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.animate-sos-pulse {
+  animation: pulse-ring 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Tremor friendly smooth button active states */
+button {
+  touch-action: manipulation;
+}

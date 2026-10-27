@@ -1,0 +1,11 @@
+{
+  "name": "Mitra - Elder Companion & Safety Assistant",
+  "description": "Voice-first, accessible companion app for older adults and caregivers featuring medicine alarms with escalation, memory retrieval, one-touch SOS, fall detection, and daily check-ins.",
+  "requestFramePermissions": [
+    "geolocation",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

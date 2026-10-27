@@ -9,6 +9,7 @@ import {
   HeartHandshake,
   Activity,
   ClipboardList,
+  Smartphone,
 } from 'lucide-react';
 import { Language, TextScale, ThemeMode, ActiveRole } from '../types';
 import { getTranslation } from '../utils/translations';
@@ -26,6 +27,7 @@ interface ElderHeaderProps {
   activeRole: ActiveRole;
   onRoleChange: (role: ActiveRole) => void;
   onTriggerFallSim: () => void;
+  onOpenApkModal: () => void;
 }
 
 export const ElderHeader: React.FC<ElderHeaderProps> = ({
@@ -40,6 +42,7 @@ export const ElderHeader: React.FC<ElderHeaderProps> = ({
   activeRole,
   onRoleChange,
   onTriggerFallSim,
+  onOpenApkModal,
 }) => {
   const t = getTranslation(language);
   const [showAccessMenu, setShowAccessMenu] = useState(false);
@@ -111,6 +114,19 @@ export const ElderHeader: React.FC<ElderHeaderProps> = ({
 
         {/* Quick Accessibility Controls */}
         <div className="flex items-center gap-1.5">
+          {/* Android APK & Install Button */}
+          <button
+            onClick={() => {
+              playChime();
+              onOpenApkModal();
+            }}
+            className="px-2.5 py-1.5 bg-amber-500 hover:bg-amber-400 text-stone-950 rounded-lg text-xs font-black flex items-center gap-1 shadow-md transition-all active:scale-95"
+            title="Install as Android App or Build APK"
+          >
+            <Smartphone className="w-3.5 h-3.5" />
+            <span>Android APK</span>
+          </button>
+
           {/* Fall Detector Trigger Test Button */}
           <button
             onClick={() => {

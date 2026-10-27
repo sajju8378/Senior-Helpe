@@ -273,12 +273,30 @@ async function setupServer() {
   const isDev = process.env.NODE_ENV !== 'production';
 
   if (isDev) {
+    const fs = await import('fs');
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
-      appType: 'spa',
+      appType: 'custom',
     });
     app.use(vite.middlewares);
+
+    app.use('*', async (req: Request, res: Response, next) => {
+      const url = req.originalUrl;
+      try {
+        const indexPath = path.resolve(__dirname, 'index.html');
+        if (!fs.existsSync(indexPath)) {
+          res.status(404).send('index.html not found');
+          return;
+        }
+        let template = fs.readFileSync(indexPath, 'utf-8');
+        template = await vite.transformIndexHtml(url, template);
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(template);
+      } catch (e: any) {
+        if (vite.ssrFixStacktrace) vite.ssrFixStacktrace(e);
+        next(e);
+      }
+    });
   } else {
     const distPath = path.resolve(__dirname, 'dist');
     app.use(express.static(distPath));
@@ -287,8 +305,9 @@ async function setupServer() {
     });
   }
 
-  app.listen(PORT, () => {
-    console.log(`Elder Companion App Server running on port ${PORT}`);
+  const host = '0.0.0.0';
+  app.listen(Number(PORT), host, () => {
+    console.log(`Elder Companion App Server running on http://${host}:${PORT}`);
   });
 }
 

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+  <circle cx="256" cy="256" r="180" fill="#1c1917" filter="url(#shadow)" />
+  <!-- Stylized Devanagari 'Ma' / Heart Hands Symbol -->
+  <path d="M190 320 C160 280, 160 220, 200 180 C230 150, 256 180, 256 195 C256 180, 282 150, 312 180 C352 220, 352 280, 322 320 L256 380 Z" fill="#f59e0b" />
+  <circle cx="256" cy="140" r="28" fill="#fde68a" />
+</svg>

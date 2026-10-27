@@ -1,0 +1,39 @@
+{
+  "id": "/",
+  "name": "Mitra - Elder Companion & Safety Assistant",
+  "short_name": "Mitra",
+  "description": "Voice-first, accessible companion app for older adults and caregivers featuring medicine alarms with escalation, memory retrieval, one-touch SOS, fall detection, and daily check-ins.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0c0a09",
+  "theme_color": "#d97706",
+  "categories": ["medical", "health", "lifestyle", "utilities"],
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -56,6 +56,7 @@ import { SOSModal } from './components/SOSModal';
 import { FallDetectionModal } from './components/FallDetectionModal';
 import { ActiveReminderAlarm } from './components/ActiveReminderAlarm';
 import { CallSimulationModal } from './components/CallSimulationModal';
+import { AndroidApkModal } from './components/AndroidApkModal';
 
 export default function App() {
   // App accessibility & settings state
@@ -91,6 +92,7 @@ export default function App() {
   // Modal / Overlay states
   const [isSOSOpen, setIsSOSOpen] = useState(false);
   const [isFallModalOpen, setIsFallModalOpen] = useState(false);
+  const [isApkModalOpen, setIsApkModalOpen] = useState(false);
   const [activeAlarmReminder, setActiveAlarmReminder] = useState<Reminder | null>(null);
   const [activeCall, setActiveCall] = useState<{ contact: Contact; isVideo: boolean } | null>(null);
 
@@ -261,6 +263,7 @@ export default function App() {
         activeRole={activeRole}
         onRoleChange={setActiveRole}
         onTriggerFallSim={() => setIsFallModalOpen(true)}
+        onOpenApkModal={() => setIsApkModalOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -475,6 +478,13 @@ export default function App() {
           language={language}
         />
       )}
+
+      {/* Android APK & GitHub Pages Modal */}
+      <AndroidApkModal
+        isOpen={isApkModalOpen}
+        onClose={() => setIsApkModalOpen(false)}
+        language={language}
+      />
     </div>
   );
 }
